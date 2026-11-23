@@ -51,9 +51,9 @@ begin
     (c3, 'meeting', 'اجتماع تفاوض على العيادة', now() - interval '6 days', p3, true);
 
   insert into public.children (name, gender, birthday, school, grade, emergency_contact, color, is_demo)
-  values ('يوسف', 'son', d - interval '11 years', 'مدرسة النيل الدولية', 'الصف السادس', '01001234000', '#7C9A86', true) returning id into son;
+  values ('باسل', 'son', d - interval '11 years', 'مدرسة النيل الدولية', 'الصف السادس', '01001234000', '#7C9A86', true) returning id into son;
   insert into public.children (name, gender, birthday, school, grade, emergency_contact, color, is_demo)
-  values ('ليلى', 'daughter', d - interval '8 years', 'مدرسة النيل الدولية', 'الصف الثالث', '01001234000', '#C48B8B', true) returning id into dau;
+  values ('لوجين', 'daughter', d - interval '8 years', 'مدرسة النيل الدولية', 'الصف الثالث', '01001234000', '#C48B8B', true) returning id into dau;
 
   insert into public.school_schedules (child_id, weekday, school_name, start_time, end_time, is_demo)
   select son, w, 'مدرسة النيل الدولية', '07:45'::time, '14:30'::time, true from unnest(array[0,1,2,3,4]) w
@@ -66,7 +66,7 @@ begin
     (son, 'سباحة', 'كابتن عمر', null, 'نادي الصيد', 6, '10:00', '11:30', 800, 'paid', 60, true),
     (dau, 'عربي', 'أ. هبة', '01234567890', 'البيت', 1, '16:00', '17:00', 700, 'paid', 30, true),
     (dau, 'باليه', 'Ms. Laila', null, 'أكاديمية الفنون', 3, '17:30', '18:30', 1000, 'unpaid', 60, true),
-    (dau, 'رسم', 'أ. سلمى', null, 'أتيليه', 5, '12:00', '13:00', 500, 'paid', 30, true);
+    (dau, 'رسم', 'أ. هالة', null, 'أتيليه', 5, '12:00', '13:00', 500, 'paid', 30, true);
 
   insert into public.homework (child_id, title, subject, due_date, priority, status, is_demo) values
     (son, 'حل تمارين الكسور ص 45', 'رياضيات', d + 1, 'high', 'in_progress', true),
@@ -131,7 +131,7 @@ begin
 
   insert into public.expenses (amount, category, spent_on, description, payment_method, is_demo) values
     (1250, 'household', d - 1, 'مشتريات سوبر ماركت', 'card', true),
-    (1200, 'lessons', d - 4, 'درس رياضيات يوسف', 'cash', true),
+    (1200, 'lessons', d - 4, 'درس رياضيات باسل', 'cash', true),
     (450, 'transport', d - 2, 'بنزين', 'cash', true),
     (800, 'personal', d - 6, 'كوافير', 'instapay', true),
     (300, 'real_estate', d - 3, 'إعلان ممول', 'card', true),
